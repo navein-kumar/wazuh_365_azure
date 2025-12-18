@@ -33,7 +33,7 @@
     <request>
       <tag>azure-activity</tag>
       <query>AzureActivity | order by TimeGenerated desc</query>
-      <workspace>2fb0851c-86d7-4e69-ba44-fadd6df0fb1e</workspace>
+      <workspace>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</workspace>
       <time_offset>1h</time_offset>
     </request>
   </log_analytics>
