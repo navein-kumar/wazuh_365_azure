@@ -1,0 +1,52 @@
+
+<!-- ============================================ -->
+<!-- OFFICE 365 INTEGRATION -->
+<!-- ============================================ -->
+<office365>
+  <enabled>yes</enabled>
+  <interval>1m</interval>
+  <curl_max_size>1M</curl_max_size>
+  <only_future_events>yes</only_future_events>
+  <api_auth>
+    <tenant_id>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</tenant_id>
+    <client_id>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</client_id>
+    <client_secret>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</client_secret>
+    <api_type>commercial</api_type>
+  </api_auth>
+  <subscriptions>
+    <subscription>Audit.AzureActiveDirectory</subscription>
+    <subscription>Audit.Exchange</subscription>
+    <subscription>Audit.SharePoint</subscription>
+    <subscription>Audit.General</subscription>
+    <subscription>DLP.All</subscription>
+  </subscriptions>
+</office365>
+<wodle name="azure-logs">
+  <disabled>no</disabled>
+  <interval>5m</interval>
+  <run_on_start>yes</run_on_start>
+  
+  <!-- Azure Activity Logs -->
+  <log_analytics>
+    <auth_path>/var/ossec/wodles/credentials/azure_creds</auth_path>
+    <tenantdomain>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</tenantdomain>
+    <request>
+      <tag>azure-activity</tag>
+      <query>AzureActivity | order by TimeGenerated desc</query>
+      <workspace>2fb0851c-86d7-4e69-ba44-fadd6df0fb1e</workspace>
+      <time_offset>1h</time_offset>
+    </request>
+  </log_analytics>
+  
+  <!-- Key Vault Logs -->
+  <log_analytics>
+    <auth_path>/var/ossec/wodles/credentials/azure_creds</auth_path>
+    <tenantdomain>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</tenantdomain>
+    <request>
+      <tag>azure-keyvault</tag>
+      <query>AzureDiagnostics | where ResourceType == 'VAULTS' | order by TimeGenerated desc</query>
+      <workspace>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</workspace>
+      <time_offset>1h</time_offset>
+    </request>
+  </log_analytics>
+</wodle>
