@@ -1,0 +1,8 @@
+# save crdentials in below file
+# vim /var/ossec/wodles/credentials/azure_creds 
+application_id = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+application_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+
